@@ -1,0 +1,20 @@
+discord-trade-bot/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── .env.example         # secrets template (tokens, API keys)
+├── config.example.yaml  # analysts, TP split, risk limits
+├── bot/
+│   ├── __init__.py
+│   ├── main.py          # entry point, wires everything together
+│   ├── config.py        # loads .env + config.yaml
+│   ├── discord_client.py  # listens to channels, dedups by message ID
+│   ├── parser.py        # message -> signal (symbol, side, entry, SL, TPs)
+│   ├── exchange.py      # ccxt: entry, SL, TP orders, testnet toggle
+│   ├── manager.py       # TP hit -> trim + move SL (BE after TP1, TP1 after TP2)
+│   ├── risk.py          # max trades, size cap, sanity checks
+│   └── db.py            # SQLite: open trades + processed message IDs
+├── tests/
+│   ├── test_parser.py   # real analyst messages -> expected output
+│   └── test_manager.py  # TP/SL transition logic
+└── data/                # SQLite file (gitignored)
