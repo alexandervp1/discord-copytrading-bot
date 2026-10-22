@@ -1,0 +1,7 @@
+discord.py>=2.4
+ccxt>=4.4
+python-dotenv>=1.0
+pyyaml>=6.0
+pydantic>=2.7
+anthropic>=0.40
+pytest>=8.0
